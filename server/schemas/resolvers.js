@@ -8,7 +8,7 @@ const resolvers = {
             return User.find();
         },
 
-        profile: async (parent, { userId }) => {
+        user: async (parent, { userId }) => {
             return User.findOne({_id: userId });
         },
     },
