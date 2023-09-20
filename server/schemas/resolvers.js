@@ -27,9 +27,11 @@ const resolvers = {
             if (!user) {
                 throw new AuthenticationError('No user with this email found');
              }
+
          const correctPw = await user.isCorrectPassword(password);
          
-         is (!correctPw) {
+         if (!correctPw) {
+
             throw new AuthenticationError('Incorrect Password!!');
          }
 
@@ -42,6 +44,8 @@ const resolvers = {
 
                 //THIS is where we will later add removeWorkout 
 
-            }
-        }
-}
+            },
+        },
+};
+
+module.exports = resolvers; 
