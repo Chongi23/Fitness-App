@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import Header from './components/Header';
 import Workout from './pages/Workout';
+import {button} from 'semantic-ui-react';
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
