@@ -1,0 +1,16 @@
+   {
+   "definitions": {
+      "accordion" : true,
+      "ad"        : true,
+      "api"       : true
+    },
+    "themes": {
+      "amazon"     : false,
+      "basic"      : false,
+      "bookish"    : false,
+      "bootstrap3" : false,
+      "chubby"     : false,
+      "classic"    : false,
+      "default"    : true
+    }
+}
