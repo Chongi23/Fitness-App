@@ -15,5 +15,11 @@
     "license": "MIT",
     "devDependencies": {
         "concurrently": "^5.1.0"
+    },
+    "dependencies": {
+        "gulp": "^4.0.2",
+        "semantic-ui-css": "^2.5.0",
+        "semantic-ui-dropdown": "^2.5.0",
+        "semantic-ui-react": "^2.1.4"
     }
 }
