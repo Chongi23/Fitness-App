@@ -39,12 +39,32 @@ const resolvers = {
          return { token, user };
             },
 
+            addWorkout : async (parent, { userId, workout  }) => {
+                return User.findOneAndUpdate(
+                    {_id: userId },
+                    {
+                        $addToSet: { workouts: workout }
+                    },
+                    {
+                        new: true,
+                        runValidators:true,
+                    }
+                );
+            },
+
             removeUser : async (parent, { userId }) => {
                 return User.findOneAndDelete({ _is: userId });
+            },
 
                 //THIS is where we will later add removeWorkout 
 
-            },
+                removeWorkout: async (parent, { userId, workout }) => {
+                    return User.findOneAndUpdate(
+                      { _id: userId },
+                      { $pull: { workouts: workout } },
+                      { new: true }
+                    );
+                  },
         },
 };
 
