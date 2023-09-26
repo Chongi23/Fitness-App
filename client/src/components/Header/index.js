@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import { 
+     Segment,
+     Button
+    } from 'semantic-ui-react';
 const Header = () => {
     const logout = (event) => {
         event.preventDefault();
@@ -8,11 +12,11 @@ const Header = () => {
     };
     return (
         <header>
-            <div>
+            <Segment basic inverted padded='very' vertical>
                 <Link to='/'>
                     <h1>Fitness Finesse</h1>
                 </Link>
-                <p>It's time to finesse your fitness.</p>
+                <h3>It's time to finesse your fitness.</h3>
                 <div>
                     {Auth.loggedIn() ? (
                         <>
@@ -26,16 +30,17 @@ const Header = () => {
                     ) : (
                         <>
                             <Link to='/login'>
-                                Login
+                            <Button primary>Login</Button>
                             </Link>
                             <Link to='/signup'>
-                                Signup
+                            <Button primary>signup</Button>
                             </Link>
                         </>
                     )}
                 </div>
-            </div>
+            </Segment>   
         </header>
     );
 };
+
 export default Header;
