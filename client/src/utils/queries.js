@@ -21,3 +21,24 @@ query singleUser($userId: ID!) {
 
 //What WOULD this do exactly?
 // export const QUERY_ME = gql`?
+
+//EXERCISES
+
+export const QUERY_EXERCISES = gql`
+query allExercises {
+    exercises {
+        _id
+        exercise
+
+    }
+}
+`;
+
+export const QUERY_SINGLE_EXERCISE = gql`
+query singleExercise($exerciseId: ID!) {
+    exercise(exerciseId: $exerciseId) {
+        _id
+        exercise
+    }
+}
+`;

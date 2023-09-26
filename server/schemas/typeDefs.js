@@ -7,11 +7,14 @@ const typeDefs = gql`
         firstName: String!
         lastName: String!
         email: String!
+        workouts: [String]!
+
         # There is now a field to store the user's password
         password: String
     }
     
   # Set up an Auth type to handle returning data from a user creating or user login
+  
    type Auth {
    token: ID!
    user: User
@@ -27,7 +30,9 @@ const typeDefs = gql`
           addUser(userName: String!, firstName: String!, lastName: String!, email: String!, password: String!): Auth
             login(email: String!, password: String!): Auth 
 
-         removeUser(userId: ID!): User   
+            addWorkout(userId: ID!, workout: String!): User
+           removeUser(userId: ID!): User   
+           removeWorkout(userId: ID!, workout: String!): User
     }
     `;
 
