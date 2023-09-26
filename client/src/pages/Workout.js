@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import  WorkoutForm  from '../components/WorkoutForm';
 //import WorkoutList from '../components/WorkoutList';
 import { useParams } from 'react-router-dom';
@@ -27,6 +28,19 @@ const Workout = () => {
     </div>
    );
    
+=======
+import { 
+    Segment 
+   } from 'semantic-ui-react';
+const Workout = () => {
+    return (
+        <main>
+            <Segment>
+                <h1>Build Workout Under Construction</h1>
+            </Segment>
+        </main>
+    );
+>>>>>>> e2c58d726db3d866b8de98e589c0cdb7a9ec8203
 };
 
 export default Workout;

@@ -5,7 +5,9 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
-
+import { 
+    Segment 
+   } from 'semantic-ui-react';
 const Signup = () => {
     const [formState, setFormState ] = useState({
         userName: '',
@@ -42,7 +44,7 @@ const Signup = () => {
 
     return (
         <main>
-            <div>
+            <Segment>
                 <h4>Finesse Your Fitness! Sign Up!</h4>
                 <div>
                     {data ? (
@@ -105,7 +107,7 @@ const Signup = () => {
                         </div>
                     )}
                 </div>
-            </div>
+            </Segment>
         </main>
     );
 };
