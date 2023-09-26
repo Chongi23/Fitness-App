@@ -25,7 +25,7 @@ const WorkoutForm = ({ userId }) => {
 
   return (
     <div>
-      <h4>Create More Workouts</h4>
+      <h4>Lets build some workouts</h4>
 
       {Auth.loggedIn() ? (
         <form
@@ -43,7 +43,7 @@ const WorkoutForm = ({ userId }) => {
 
           <div>
             <button  type="submit">
-              Set Workout
+              Save Workout
             </button>
           </div>
           {error && (

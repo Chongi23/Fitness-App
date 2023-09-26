@@ -1,17 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-import Auth from '../../utils/auth'
-
-
-
-=======
 import Auth from '../../utils/auth';
-import { 
-     Segment,
-     Button
-    } from 'semantic-ui-react';
->>>>>>> e2c58d726db3d866b8de98e589c0cdb7a9ec8203
+import { Segment, Button } from 'semantic-ui-react';
+
+
 const Header = () => {
     const logout = (event) => {
         event.preventDefault();
@@ -28,7 +20,7 @@ const Header = () => {
                     {Auth.loggedIn() ? (
                         <>
                             <Link to='/workout'>
-                                Workouts
+                               MY WORKOUTS
                             </Link>
                             <button onClick={logout}>
                                 Logout
