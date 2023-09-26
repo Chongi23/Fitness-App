@@ -33,7 +33,14 @@ const userSchema = new Schema(
             type: String,
             require: true,
             minlength: 5,
-        }
+        },
+        workouts: [
+            {
+            type: String,
+            trim: true,
+        },
+
+        ],
 
     }
 );
