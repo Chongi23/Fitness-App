@@ -10,7 +10,7 @@ const Home = () => {
             <Segment basic inverted padded='very' vertical textAlign='center'>
                 <h1>Congratulations! You're Home.</h1>
                 <h2> Or are you in a gym? </h2>
-                <Image src="Korina-Claudia.png"></Image>
+                <Image src="Korina-Claudia.png" fluid></Image>
             </Segment>
         </main>
     );
