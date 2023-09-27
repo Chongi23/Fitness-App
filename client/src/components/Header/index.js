@@ -11,7 +11,7 @@ const Header = () => {
     };
     return (
         <header>
-            <Segment basic inverted padded='very' vertical>
+            <Segment basic inverted padded='very' vertical textAlign='center'>
                 <Link to='/'>
                     <h1>Fitness Finesse</h1>
                 </Link>
