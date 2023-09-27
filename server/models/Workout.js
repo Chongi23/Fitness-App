@@ -13,27 +13,23 @@ const workoutSchema = new Schema(
             max_length: 500,
         },
 
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-            require: true,
-        },
+        // Do we NEED to use this since workout BELONGS to THAT user already? KLG 09/27
+       // user: {
+       //     type: Schema.Types.ObjectId,
+       //     ref: 'User',
+       //     require: true,
+       // },
 
         exercises: [
             {
-                excercise: {
-                    type: Schema.Types.ObjectId,
+              //delete exercise : {} <--- look at 22/activity 23 for reference - KLG 09/27
+                   type: Schema.Types.ObjectId,
                     ref: 'Exercise',
                     require: true,
-                },
-                sets: Number,
-                weight: Number,
-                reps: Number,
-                notes: String,
-            },
-        ],
-    },
-);
+                 //deleted sets reps 
+            }
+        ]
+    });
 
 const Workout = model('Workout', workoutSchema);
 

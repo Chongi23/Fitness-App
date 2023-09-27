@@ -1,4 +1,4 @@
-const {scheme, model} = require('mongoose');
+const {Schema, model} = require('mongoose');
 
 
 const exerciseSchema = new Schema(
@@ -34,5 +34,7 @@ const exerciseSchema = new Schema(
 
 );
 
+//does adding mongoose.model here help or break, or should it just stay model('Exercise', exercise schema)?
 const Exercise = model('Exercise', exerciseSchema);
+
 module.exports = Exercise;

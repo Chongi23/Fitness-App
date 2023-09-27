@@ -4,7 +4,9 @@ import { useMutation } from '@apollo/client';
 import { ADD_WORKOUT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { Segment, Button } from 'semantic-ui-react';
+
 const WorkoutForm = ({ userId }) => {
+  // set initial form state for new workouts
   const [workout, setWorkout] = useState('');
 
   const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
