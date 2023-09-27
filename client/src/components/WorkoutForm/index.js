@@ -25,6 +25,24 @@ const WorkoutForm = ({ userId }) => {
     }
   };
 
+  // Attempt at making a success workout
+//function Success() {
+//   const [addWorkout] = useMutation(ADD_WORKOUT);
+//   //What are we doing wrong here
+//   // Also user is not defined
+//   const workout = addWorkout;
+//   useEffect(() => {
+//      async function saveWorkout() {
+//         const exercises = workout.map((exercise) => exercise._id);
+//          if(exercises.length) {
+//            const { data } = await addWorkout({ variable: { exercises } });
+//            console.log(data);
+//            return data;
+//          }
+//      }
+//      saveWorkout();
+//   }, [addWorkout]);
+
   return (
     <Segment>
       <h4>Lets build some workouts</h4>
