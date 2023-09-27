@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_WORKOUT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-
+import { Segment, Button } from 'semantic-ui-react';
 const WorkoutForm = ({ userId }) => {
   const [workout, setWorkout] = useState('');
 
@@ -24,7 +24,7 @@ const WorkoutForm = ({ userId }) => {
   };
 
   return (
-    <div>
+    <Segment>
       <h4>Lets build some workouts</h4>
 
       {Auth.loggedIn() ? (
@@ -42,9 +42,9 @@ const WorkoutForm = ({ userId }) => {
           </div>
 
           <div>
-            <button  type="submit">
+            <Button  type="submit">
               Save Workout
-            </button>
+            </Button>
           </div>
           {error && (
             <div>
@@ -58,7 +58,7 @@ const WorkoutForm = ({ userId }) => {
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
-    </div>
+    </Segment>
   );
 };
 

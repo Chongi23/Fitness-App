@@ -20,7 +20,7 @@ const Header = () => {
                     {Auth.loggedIn() ? (
                         <>
                             <Link to='/workout'>
-                                Workout
+                            <Button primary>Workout</Button>
                             </Link>
                             <Button primary onClick={logout}>Logout</Button>
                         </>
