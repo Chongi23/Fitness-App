@@ -8,16 +8,7 @@ const exerciseSchema = new Schema(
       required: true,
       max_length: 100,
     },
-    sets: {
-      type: Number,
-    },
-    reps: {
-      type: Number,
-    },
-    weight: {
-      type: Number,
-    },
-    notes: {
+    description: {
       type: String,
       max_length: 500,
     },
