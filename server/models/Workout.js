@@ -25,7 +25,6 @@ const workoutSchema = new Schema(
               //delete exercise : {} <--- look at 22/activity 23 for reference - KLG 09/27
                    type: Schema.Types.ObjectId,
                     ref: 'Exercise',
-                    require: true,
                  //deleted sets reps 
             }
         ]
