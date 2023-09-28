@@ -43,12 +43,6 @@ const typeDefs = gql`
         notes: String
       }
 
-  type Tracker {
-    _id: ID
-    workoutDate: String
-    workoutDetails: [ExerciseDetails]
-  }
-
     ### Create a new exercise for a specific workout.  This will be used in mutations and queries
   
 
