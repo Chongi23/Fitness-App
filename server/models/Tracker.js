@@ -1,12 +1,20 @@
-const { Schema, Model } = require('mongoose');
+const { Schema, model } = require('mongoose');
+const exerciseDetailsSchema = require('./ExerciseDetails');
+c
 
 const trackerSchema = new Schema(
     {
-        
-    }
+        workoutDate: Date,
+
+        workoutDetails: [
+            exerciseDetailsSchema
+        ],
+    },
+    {
+        timestamps: true
+    }, 
 )
 
-//Workout
-//Date
-//Exercises
-//Workout Details [Sets, Reps, Weight, Notes]
+const Tracker = model('Tracker', trackerSchema);
+
+module.exports = Tracker;

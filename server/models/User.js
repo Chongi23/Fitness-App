@@ -39,7 +39,12 @@ const userSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Workout',
         },
-
+        ],
+        history: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Tracker',
+            }
         ],
 
     }
