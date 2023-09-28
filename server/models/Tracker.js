@@ -1,14 +1,14 @@
 const { Schema, model } = require('mongoose');
-const exerciseDetailsSchema = require('./ExerciseDetails');
-c
+const exerciseDetailsSchema = require('./ExerciseDetail');
 
 const trackerSchema = new Schema(
     {
-        workoutDate: Date,
-
-        workoutDetails: [
+        
+        exerciseDetails: [
             exerciseDetailsSchema
         ],
+
+        workoutDate: Date,
     },
     {
         timestamps: true

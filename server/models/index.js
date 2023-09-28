@@ -1,7 +1,7 @@
 const User = require('./User');
 const Exercise = require('./Exercise');
 const Workout = require('./Workout');
-const ExerciseDetails = require('./ExerciseDetails');
-// const Tracker = require('./Tracker');
+const ExerciseDetails = require('./ExerciseDetail');
+const Tracker = require('./Tracker');
 
-module.exports = { User, Exercise, Workout, ExerciseDetails };
+module.exports = { User, Exercise, Workout, ExerciseDetails, Tracker };
