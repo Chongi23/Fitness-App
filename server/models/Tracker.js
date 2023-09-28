@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const exerciseDetailsSchema = require('./ExerciseDetails');
-
+c
 
 const trackerSchema = new Schema(
     {
