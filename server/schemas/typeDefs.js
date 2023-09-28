@@ -11,37 +11,37 @@ const typeDefs = gql`
         workouts: [Workout]
 
         # There is now a field to store the user's password
-        password: String
+        password: String!
     }
     
   # Set up an Auth type to handle returning data from a user creating or user login
   
    type Auth {
-   token: ID!
-   user: User
-  }
+    token: ID!
+    user: User
+    }
 
-    type Query {
-        users: [User]!
-        user(userId: ID!): User
+  type Query {
+    users: [User]!
+    user(userId: ID!): User
     }
  # Added workout type def - KLG 09/27/23
 
-    type Workout {
-      _id: ID 
-      title: String!
-      description: String
-      exercises: [Exercise]
-      }
+  type Workout {
+    _id: ID 
+    title: String!
+    description: String
+    exercises: [Exercise]
+    }
 
-      type Exercise {
-        _id:ID
-        name: String
-        sets: Int
-        reps: Int
-        weight: Int
-        notes: String
-      }
+  type Exercise {
+    _id:ID
+    name: String
+    sets: Int
+    reps: Int
+    weight: Int
+    notes: String
+    }
 
     ### Create a new exercise for a specific workout.  This will be used in mutations and queries
   

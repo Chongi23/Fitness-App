@@ -12,6 +12,12 @@ const exerciseSchema = new Schema(
       type: String,
       max_length: 500,
     },
+    exerciseDetails: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'ExerciseDetails',
+      },
+    ],
       
     },
 
