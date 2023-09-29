@@ -16,7 +16,13 @@ const WorkoutForm = ({ userId }) => {
 
     try {
       const data = await addWorkout({
-        variables: { title: workout, exercises: [], userId: userId },
+        variables: {  
+          userId: userId, 
+          workout: {
+            title: workout,
+            exercises: []
+          }
+        },
       });
 
       setWorkout('');
