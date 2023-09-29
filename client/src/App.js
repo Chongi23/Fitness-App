@@ -1,6 +1,6 @@
 import React from 'react';
 import {ApolloClient, ApolloProvider, InMemoryCache, createHttpLink} from '@apollo/client';
-import {setContext} from '@apollo/client/link/context';
+import { setContext } from '@apollo/client/link/context';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
