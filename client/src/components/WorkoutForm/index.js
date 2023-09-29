@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { ADD_WORKOUT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { Segment, Button } from 'semantic-ui-react';
@@ -16,7 +16,7 @@ const WorkoutForm = ({ userId }) => {
 
     try {
       const data = await addWorkout({
-        variables: { userId, workout },
+        variables: { title: workout, exercises: [], userId: userId },
       });
 
       setWorkout('');

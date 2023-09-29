@@ -69,7 +69,7 @@ const typeDefs = gql`
         #Set up mutations to handle creating a user or logging into a user profile and return Auth type
           addUser(userName: String!, firstName: String!, lastName: String!, email: String!, password: String!): Auth
           login(email: String!, password: String!): Auth 
-          addWorkout(userId: ID!, workout: String!): User
+          addWorkout(userId: ID!, workout: WorkoutInput!): User
           removeUser(userId: ID!): User   
           removeWorkout(userId: ID!, workout: String!): User
           createExerciseForWorkout(workoutId: ID!, exercise: ExerciseInput!): Exercise

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { 
@@ -27,8 +27,10 @@ const Login = (props) => {
             const { data } = await login({
                 variables: { ...formState },
             });
-
+            console.log(data);
             Auth.login(data.login.token);
+            console.log('Logged in with token:', data.login.token);
+
         } catch (e) {
             console.error(e);
         }
