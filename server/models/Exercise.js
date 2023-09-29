@@ -15,7 +15,7 @@ const exerciseSchema = new Schema(
     exerciseDetails: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'ExerciseDetails',
+        ref: 'ExerciseDetail',
       },
     ],
       
