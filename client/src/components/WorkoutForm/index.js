@@ -5,6 +5,9 @@ import { ADD_WORKOUT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { Segment, Button } from 'semantic-ui-react';
 
+
+
+
 const WorkoutForm = ({ userId }) => {
   // set initial form state for new workouts
   const [workout, setWorkout] = useState('');
@@ -19,16 +22,17 @@ const WorkoutForm = ({ userId }) => {
         variables: { userId, workout },
       });
 
-      setWorkout('');
+    
     } catch (err) {
       console.error(err);
     }
-  };
 
-  // Attempt at making a success workout
+    setWorkout('');
+  };
+// Attempt at making a success workout
 //function Success() {
-//   const [addWorkout] = useMutation(ADD_WORKOUT);
-//   //What are we doing wrong here
+   //const [addWorkout] = useMutation(ADD_WORKOUT);
+   //What are we doing wrong here
 //   // Also user is not defined
 //   const workout = addWorkout;
 //   useEffect(() => {
@@ -56,6 +60,7 @@ const WorkoutForm = ({ userId }) => {
             <input
               placeholder="Add a Workout..."
               value={workout}
+              name="workout"
              
               onChange={(event) => setWorkout(event.target.value)}
             />

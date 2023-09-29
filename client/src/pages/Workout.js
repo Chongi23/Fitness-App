@@ -8,7 +8,7 @@ import { Segment } from 'semantic-ui-react';
 
 const Workout = () => {
    const { userId } = useParams();
-   const {loading, data } = useQuery(QUERY_SINGLE_USER, {
+   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
     variables: { userId: userId },
    });
    console.log('data', loading);

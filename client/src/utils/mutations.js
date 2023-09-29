@@ -25,17 +25,12 @@ mutation login($email: String!, $password: String!) {
 
 //Will need to add WORKOUT // EXERCISES TO THOSE WORKOUTS
 export const ADD_WORKOUT= gql`
-mutation addWorkout($exercises: [ID]!) {
-        addWorkout(exercises: $exercises) {
+mutation addWorkout($title: String!, $description: String!) {
+        addWorkout(title: $title, description: $description) {
+            
+            
             title
-            exercises {
-             _id
-             name
-             sets
-             reps
-             weight
-             notes
-            }
+            description
             
         }
 }

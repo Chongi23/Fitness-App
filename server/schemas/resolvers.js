@@ -54,11 +54,14 @@ const resolvers = {
                     user: context.user._id,
                 });
 
-                await User.findByIdAndUpdate(userId, {
-                    $push: { workouts: createdWorkout },
-                });
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                   { $addToSet: {workouts: workout._id} },
+                   { new: true}
+                );
 
                 return createdWorkout;
+
             } catch (error) {
                 console.error(error);
                 throw new Error('Could not add workout');
