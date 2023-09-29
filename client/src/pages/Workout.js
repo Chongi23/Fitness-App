@@ -5,15 +5,18 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_USER } from '../utils/queries';
 import { Segment } from 'semantic-ui-react';
+import Auth from '../utils/auth';
 
 const Workout = () => {
-   const { userId } = useParams();
+   //const { userId } = useParams();
+   const userId = Auth.getUser().data._id
    const {loading, data } = useQuery(QUERY_SINGLE_USER, {
     variables: { userId: userId },
    });
    console.log('data', loading);
 
    const user = data?.user || {};
+   console.log("User", user)
    
    if (loading) {
     return <div>Loading...</div>;
@@ -23,7 +26,7 @@ const Workout = () => {
       <Segment>
     <div>
         <h2>
-         {user.name} you have these workouts </h2>
+         {user.userName} you have these workouts </h2>
          <div><WorkoutForm userId={user._id} />
          </div>
     </div>
