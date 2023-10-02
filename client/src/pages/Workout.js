@@ -28,8 +28,8 @@ const Workout = () => {
     <div>
         <h2>
          {user.userName} you have these workouts </h2>
-         {/* <div><WorkoutForm userId={user._id} />
-         {user.workouts.length > 0 && (
+         <div><WorkoutForm userId={user._id} /></div>
+         {/* <div>{user.workouts.length > 0 && (
             <WorkoutCard workout={workouts[user.workouts.length -1]}
             />
          )}
