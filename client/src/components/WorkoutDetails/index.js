@@ -4,8 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { ADD_WORKOUT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { Segment, Button, Card, Form } from 'semantic-ui-react';
-import WorkoutCard from '../WorkoutCard';
-const WorkoutForm = ({ userId }) => {
+const WorkoutDetails = ({ userId, startState, handleStateChange }) => {
   // set initial form state for new workouts
   const [workoutData, setWorkoutData] = useState({
     title: '',
@@ -58,7 +57,7 @@ window.location.reload();
 //   }, [addWorkout]);
   return (
     <Card  style={{width: "80%", padding: "1em"}}>
-      <Card.Header>Lets build some workouts</Card.Header>
+      <Card.Header>Workout Details</Card.Header>
       {Auth.loggedIn() ? (
         <Form
           onSubmit={handleFormSubmit}
@@ -104,4 +103,4 @@ window.location.reload();
     </Card>
   );
 };
-export default WorkoutForm;
+export default WorkoutDetails;

@@ -1,16 +1,17 @@
 import React from 'react';
+import { Card, Button } from 'semantic-ui-react';
 
-const WorkoutCard = ({ workout }) => {
+const WorkoutCard = ({ workout, startState, handleStateChange }) => {
     return (
-        <div>
-            <div>
-                <h4>{workout.title}</h4>
-                <p>{workout.description}</p>
-            </div>
+        <Card>
+            <h4>{workout.title}</h4>
+            <p>{workout.description}</p>
             <div>
                 {/* Render exercises, sets, weights, reps, notes */}
             </div>
-        </div>
+            <Button style={{width:"fit-content"}} startState={startState} onClick={() => handleStateChange(true)}>Start</Button>
+            <Button style={{width:"fit-content"}}>Delete</Button>
+        </Card>
     );
 };
 
