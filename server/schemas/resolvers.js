@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Workout, Exercise } = require('../models');
+const { User, Workout, Exercise, Tracker } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -41,29 +41,80 @@ const resolvers = {
             return { token, user };
         },
 
-        addWorkout: async (parent, { userId, workout }, context) => {
+        addWorkout: async (parent, { userId }, context) => {
             if (!context.user) {
                 throw new AuthenticationError('Not logged in');
             }
 
             try {
-                const createdWorkout = await Workout.create({
-                    title: workout.title,
-                    description: workout.description,
-                    exercises: workout.exercises || [],
+                const newWorkout = await Workout.create({
+                    title: '',
+                    description: '',
+                    exercises: [],
                     user: context.user._id,
                 });
 
                 await User.findByIdAndUpdate(userId, {
-                    $push: { workouts: createdWorkout },
+                    $set: { currentWorkout: newWorkout },
                 });
 
-                return createdWorkout;
+                return newWorkout;
             } catch (error) {
                 console.error(error);
                 throw new Error('Could not add workout');
             }
         },
+
+        addExerciseToWorkout: async (parent, { userId, workoutId, exercise }) => {
+            try {
+                const user = await User.findById(userId);
+
+                const currentWorkout = user.currentWorkout;
+
+                const newExercise = await Exercise.create({
+                    name: exercise.name,
+                    description: exercise.description || '',
+                    details: exercise.details || [],
+                });
+
+                currentWorkout.exercises.push(newExercise);
+
+                await User.findByIdAndUpdate(userId, {
+                    $set: { currentWorkout },
+                });
+                return currentWorkout;
+            } catch (error) {
+                throw new Error('Could not add exercise to the current workout');
+            }
+        },
+
+        recordWorkout: async (parent, { userId, workout }, context) => {
+            if (!context.user) {
+                throw new AuthenticationError('Not logged in');
+            }
+            try {
+                const user = await User.findById(userId);
+                const newTrackerEntry = await Tracker.create({
+                    workoutDate: new Date().toISOString(),
+                    exerciseDetails: workout.exercises.map((exercises) => ({
+                        sets: exercise.details.sets || 1,
+                        reps: exercise.details.reps || 0,
+                        weight: exercise.details.weight || 0,
+                        notes: exercise.details.notes || '',
+                    })),
+                });
+
+                user.workoutHistory.push(newTrackerEntry);
+                await User.findByIdAndUpdate(userId, {
+                    $set: { currentWorkout: null },
+                });
+                return newTrackerEntry;
+            } catch (error) {
+                console.error(error);
+                throw new Error('Could not record the workout');
+            }
+        },
+
 
         removeUser: async (parent, { userId }) => {
             return User.findOneAndDelete({ _is: userId });
