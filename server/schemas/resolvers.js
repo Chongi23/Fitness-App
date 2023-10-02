@@ -8,8 +8,19 @@ const resolvers = {
             return User.find();
         },
 
-        user: async (parent, { userId }) => {
-            return User.findOne({ _id: userId });
+        user: async (parent,args,context) => {
+            console.log(context.user)
+            if (context.user) {
+                const user = await User.findById(context.user._id).populate({
+                    path: 'workouts',
+                    populate: 'exercises',
+                });
+                console.log(user)
+                return user;
+
+        
+            }
+            throw new AuthenticationError('Not logged in');
         },
     },
 
@@ -41,21 +52,21 @@ const resolvers = {
             return { token, user };
         },
 
-        addWorkout: async (parent, { userId }, context) => {
+        addWorkout: async (parent, { title, description }, context) => {
             if (!context.user) {
                 throw new AuthenticationError('Not logged in');
             }
 
             try {
                 const newWorkout = await Workout.create({
-                    title: '',
-                    description: '',
+                    title: title ,
+                    description: description,
                     exercises: [],
                     user: context.user._id,
                 });
 
-                await User.findByIdAndUpdate(userId, {
-                    $set: { currentWorkout: newWorkout },
+                await User.findByIdAndUpdate(context.user._id, {
+                    $push: { workouts: newWorkout },
                 });
 
                 return newWorkout;

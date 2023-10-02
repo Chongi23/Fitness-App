@@ -10,9 +10,8 @@ import Auth from '../utils/auth';
 const Workout = () => {
    //const { userId } = useParams();
    const userId = Auth.getUser().data._id
-   const {loading, data } = useQuery(QUERY_SINGLE_USER, {
-    variables: { userId: userId },
-   });
+   const {loading, data } = useQuery(QUERY_SINGLE_USER)
+   
    console.log('data', loading);
 
    const user = data?.user || {};
@@ -28,12 +27,14 @@ const Workout = () => {
     <div>
         <h2>
          {user.userName} you have these workouts </h2>
-         <div><WorkoutForm userId={user._id} /></div>
-         {/* <div>{user.workouts.length > 0 && (
-            <WorkoutCard workout={workouts[user.workouts.length -1]}
-            />
-         )}
-         </div> */}
+         <div><WorkoutForm userId={user._id} />
+         {user.workouts.length > 0 ? 
+            user.workouts.map((workout) => 
+               <WorkoutCard workout={workout} key={workout._id} />
+            
+            )
+         : "You have no workouts yet!"}
+         </div>
     </div>
     </Segment>
    );
