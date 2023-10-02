@@ -3,7 +3,7 @@ import React from 'react';
 
 
 const WorkoutList = ({ workouts }) => {
-    if (!workouts.length) {
+    if (!workouts) {
         return <h3>No workouts found</h3>;
     }
 
