@@ -50,7 +50,7 @@ const typeDefs = gql`
 
     type Query {
         users: [User]!
-        user(userId: ID!): User
+        user: User
         userWorkoutHistory(userId: ID!): [Tracker]
     }
  # Added workout type def - KLG 09/27/23
@@ -66,7 +66,7 @@ const typeDefs = gql`
         #Set up mutations to handle creating a user or logging into a user profile and return Auth type
           addUser(userName: String!, firstName: String!, lastName: String!, email: String!, password: String!): Auth
           login(email: String!, password: String!): Auth 
-          addWorkout(userId: ID!): Workout
+          addWorkout(title:String,description:String): Workout
           addExerciseToWorkout(userId: ID!, workoutId: ID!, exercise: ExerciseInput!): Workout
           removeUser(userId: ID!): User   
           removeWorkout(userId: ID!, workout: String!): User
