@@ -9,8 +9,7 @@ const typeDefs = gql`
         email: String!
         # Changed from "workouts: [String] to workouts: [Workout], do we need exclamation point for [Workout]?
         workouts: [Workout]
-
-        # There is now a field to store the user's password
+        currentWorkout: Workout
         password: String
     }
 
@@ -22,15 +21,13 @@ const typeDefs = gql`
     }
   
     type Exercise {
-      _id:ID
+      _id: ID
       name: String
-      sets: Int
-      reps: Int
-      weight: Int
-      notes: String
+      description: String
+      details: [ExerciseDetail]
     }
   
-    type ExerciseDetails {
+    type ExerciseDetail {
       _id: ID!
       sets: Int
       reps: Int
@@ -41,7 +38,7 @@ const typeDefs = gql`
     type Tracker {
       _id: ID!
       workoutDate: String
-      exerciseDetails: [ExerciseDetails]
+      exerciseDetails: [ExerciseDetail]
     }
     
   # Set up an Auth type to handle returning data from a user creating or user login
@@ -69,19 +66,25 @@ const typeDefs = gql`
         #Set up mutations to handle creating a user or logging into a user profile and return Auth type
           addUser(userName: String!, firstName: String!, lastName: String!, email: String!, password: String!): Auth
           login(email: String!, password: String!): Auth 
-          addWorkout(userId: ID!, workout: WorkoutInput!): User
+          addWorkout(userId: ID!): Workout
+          addExerciseToWorkout(userId: ID!, workoutId: ID!, exercise: ExerciseInput!): Workout
           removeUser(userId: ID!): User   
           removeWorkout(userId: ID!, workout: String!): User
           createExerciseForWorkout(workoutId: ID!, exercise: ExerciseInput!): Exercise
           recordWorkout(userId: ID!, workout: WorkoutInput!): Tracker
     }
 
-    input ExerciseInput {
-      name: String!
+    input ExerciseDetailInput {
       sets: Int
       reps: Int
       weight: Int
       notes: String
+    }
+
+    input ExerciseInput {
+      name: String!
+      description: String
+      details: [ExerciseDetailInput]
     }
 
     input WorkoutInput {
@@ -89,6 +92,9 @@ const typeDefs = gql`
       description: String
       exercises: [ExerciseInput]
     }
+
+  
+
     `;
 
 module.exports = typeDefs;

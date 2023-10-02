@@ -24,18 +24,48 @@ mutation login($email: String!, $password: String!) {
 `;
 
 //Will need to add WORKOUT // EXERCISES TO THOSE WORKOUTS
-export const ADD_WORKOUT= gql`
-mutation addWorkout($userId: ID!, $workout: WorkoutInput!) {
-        addWorkout(userId: $userId, workout: $workout) {
-            workouts {
-                title
-                description
-                exercises {
-                    name
-                }
-            }
-        }
-}
+export const ADD_WORKOUT = gql`
+  mutation addWorkout($userId: ID!) {
+    addWorkout(userId: $userId) {
+      _id
+      title
+      description
+      exercises {
+        _id
+        name
+      }
+    }
+  }
+`;
+
+export const ADD_EXERCISE_TO_WORKOUT = gql`
+  mutation addExerciseToWorkout($userId: ID!, $workoutId: ID!, $exercise: ExerciseInput!) {
+    addExerciseToWorkout(userId: $userId, workoutId: $workoutId, exercise: $exercise) {
+      _id
+      title
+      description
+      exercises {
+        _id
+        name
+      }
+    }
+  }
+`;
+
+export const RECORD_WORKOUT = gql`
+  mutation recordWorkout($userId: ID!, $workout: WorkoutInput!) {
+    recordWorkout(userId: $userId, workout: $workout) {
+      _id
+      workoutDate
+      exerciseDetails {
+        _id
+        sets
+        reps
+        weight
+        notes
+      }
+    }
+  }
 `;
 //Will need to be able to REMOVE Workouts and Exercises
 //export const ADD_EXERCISE= gql`

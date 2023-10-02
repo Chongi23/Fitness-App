@@ -4,10 +4,15 @@ import { useQuery, useMutation } from '@apollo/client';
 import { ADD_WORKOUT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { Segment, Button } from 'semantic-ui-react';
+import WorkoutCard from '../WorkoutCard';
 
 const WorkoutForm = ({ userId }) => {
   // set initial form state for new workouts
-  const [workout, setWorkout] = useState('');
+  const [workoutData, setWorkoutData] = useState({
+    title: '',
+    description: '',
+    exercises: [],
+  });
 
   const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
 
@@ -18,17 +23,27 @@ const WorkoutForm = ({ userId }) => {
       const data = await addWorkout({
         variables: {  
           userId: userId, 
-          workout: {
-            title: workout,
-            exercises: []
-          }
+          workout: workoutData,
         },
       });
 
-      setWorkout('');
+      setWorkoutData({
+        title: '',
+        description: '',
+        exercises: [],
+      });
+      const createdWorkout = data.addWorkout;
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setWorkoutData({
+      ...workoutData,
+      [name]: value,
+    });
   };
 
   // Attempt at making a success workout
@@ -50,20 +65,26 @@ const WorkoutForm = ({ userId }) => {
 //   }, [addWorkout]);
 
   return (
-    <Segment>
+    <div>
       <h4>Lets build some workouts</h4>
 
       {Auth.loggedIn() ? (
         <form
-          
           onSubmit={handleFormSubmit}
         >
           <div className="col-12 col-lg-9">
             <input
-              placeholder="Add a Workout..."
-              value={workout}
-             
-              onChange={(event) => setWorkout(event.target.value)}
+              type="text"
+              name="title"
+              placeholder='Add a Workout Title...'
+              value={workoutData.title}
+              onChange={handleInputChange}
+            />
+            <textarea
+              name="description"
+              placeholder='Add a Workout Description...'
+              value={workoutData.description}
+              onChange={handleInputChange}
             />
           </div>
 
@@ -84,7 +105,7 @@ const WorkoutForm = ({ userId }) => {
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
-    </Segment>
+    </div>
   );
 };
 
