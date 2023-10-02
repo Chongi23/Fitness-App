@@ -1,32 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { ADD_WORKOUT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { Segment, Button } from 'semantic-ui-react';
 import WorkoutCard from '../WorkoutCard';
-
 const WorkoutForm = ({ userId }) => {
   // set initial form state for new workouts
   const [workoutData, setWorkoutData] = useState({
     title: '',
     description: ''
   });
-
+ const formRef = useRef(null);
   const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const data = await addWorkout({
-        variables: {  
-          title: workoutData.title, 
+        variables: {
+          title: workoutData.title,
           description: workoutData.description,
         },
       });
+      //setWorkoutData(data);
 window.location.reload();
-
       setWorkoutData({
         title: '',
         description: ''
@@ -35,7 +32,6 @@ window.location.reload();
       console.error(err);
     }
   };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setWorkoutData({
@@ -43,7 +39,6 @@ window.location.reload();
       [name]: value,
     });
   };
-
   // Attempt at making a success workout
 //function Success() {
 //   const [addWorkout] = useMutation(ADD_WORKOUT);
@@ -61,14 +56,13 @@ window.location.reload();
 //      }
 //      saveWorkout();
 //   }, [addWorkout]);
-
   return (
     <div>
       <h4>Lets build some workouts</h4>
-
       {Auth.loggedIn() ? (
         <form
           onSubmit={handleFormSubmit}
+          //ref={formRef}
         >
           <div className="col-12 col-lg-9">
             <input
@@ -85,7 +79,6 @@ window.location.reload();
               onChange={handleInputChange}
             />
           </div>
-
           <div>
             <Button  type="submit">
               Save Workout
@@ -106,5 +99,4 @@ window.location.reload();
     </div>
   );
 };
-
 export default WorkoutForm;
