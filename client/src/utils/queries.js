@@ -11,10 +11,27 @@ query allUsers {
 `;
 
 export const QUERY_SINGLE_USER = gql`
-query singleUser($userId: ID!) {
-    user(userId: $userId) {
+query singleUser {
+    user {
         _id
         userName
+        workouts {
+            _id
+            title
+            description
+            exercises {
+                _id
+              description
+              details {
+                _id
+                notes
+                reps
+                sets
+                weight
+              }
+              name
+            }
+        }
     }
 }
 `;

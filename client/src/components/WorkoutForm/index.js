@@ -10,8 +10,7 @@ const WorkoutForm = ({ userId }) => {
   // set initial form state for new workouts
   const [workoutData, setWorkoutData] = useState({
     title: '',
-    description: '',
-    exercises: [],
+    description: ''
   });
 
   const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
@@ -22,17 +21,16 @@ const WorkoutForm = ({ userId }) => {
     try {
       const data = await addWorkout({
         variables: {  
-          userId: userId, 
-          workout: workoutData,
+          title: workoutData.title, 
+          description: workoutData.description,
         },
       });
+window.location.reload();
 
       setWorkoutData({
         title: '',
-        description: '',
-        exercises: [],
+        description: ''
       });
-      const createdWorkout = data.addWorkout;
     } catch (err) {
       console.error(err);
     }
