@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, Button} from 
 
 
 
@@ -12,13 +13,13 @@ return (
       <div className="flex-row justify-space-between my-4">
         {workouts &&
           workouts.map((workout) => (
-            <div key={workout} className="col-12 col-xl-6">
+            <Card key={workout} className="col-12 col-xl-6">
               <div className="card mb-3">
                 <h4 className="card-header bg-dark text-light p-2 m-0">
                   {workout} <br />
                 </h4>
               </div>
-            </div>
+            </Card>
           ))}
       </div>
     </div>
