@@ -52,6 +52,8 @@ const typeDefs = gql`
         users: [User]!
         user: User
         userWorkoutHistory(userId: ID!): [Tracker]
+        workouts: [Workout]!
+        workout: Workout
     }
  # Added workout type def - KLG 09/27/23
 

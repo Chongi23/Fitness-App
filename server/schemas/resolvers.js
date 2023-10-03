@@ -22,6 +22,24 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
+
+        workouts: async () => {
+            return Workout.find();
+        },
+
+        workout: async (parent,args,context) => {
+            console.log(context.workout)
+            if (context.workout) {
+                const workout = await Workout.findById(context.workout._id).populate({
+                    path: 'exercises',
+                    populate: 'exerciseDetails',
+                });
+                console.log(workout)
+                return workout;
+            }
+        }
+
+
     },
 
     Mutation: {
