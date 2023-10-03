@@ -44,6 +44,7 @@ window.location.reload();
 
   return (
     <Card  style={{width: "75%", padding: "1em"}}>
+      <Segment>
       <Card.Header>Exercise Details</Card.Header>
       {Auth.loggedIn() ? (
         <Form
@@ -87,6 +88,7 @@ window.location.reload();
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
+      </Segment>
     </Card>
   );
 };

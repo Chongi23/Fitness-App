@@ -58,6 +58,7 @@ const WorkoutForm = ({ userId }) => {
 //   }, [addWorkout]);
   return (
     <Card  style={{width: "80%", padding: "1em"}}>
+      <Segment inverted color="black">
       <Card.Header>Lets build some workouts</Card.Header>
       {Auth.loggedIn() ? (
         <Form
@@ -101,6 +102,7 @@ const WorkoutForm = ({ userId }) => {
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
+      </Segment>
     </Card>
   );
 };
