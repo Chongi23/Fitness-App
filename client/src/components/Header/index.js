@@ -21,8 +21,8 @@ const Header = () => {
                         <>
                             <Link to='/workout'>
                             <Button primary>Workout</Button>
-                            </Link>
-                            <Button primary onClick={logout}>Logout</Button>
+                            </Link><a href="/" onClick={() => Auth.logout()}>
+                            <Button primary>Logout</Button></a>
                         </>
                     ) : (
                         <>
