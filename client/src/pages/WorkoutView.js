@@ -2,20 +2,23 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Card, Button, Segment } from 'semantic-ui-react';
 import { useQuery } from '@apollo/client';
-import { QUERY_WORKOUTS, QUERY_SINGLE_WORKOUT } from '../utils/queries';
+import { QUERY_SINGLE_WORKOUT } from '../utils/queries';
 
 
 function WorkoutView() {
     const { id } = useParams();
+    console.log(id)
     const { loading, data } = useQuery(QUERY_SINGLE_WORKOUT, {
       variables: { workoutId: id },
     });
-  
-    // if (loading) {
-    //   return <p>Loading...</p>;
-    // }
-  
-    // const workout = data?.workout; 
+    const workout = data?.workout || {}
+    console.log(workout)
+     if (loading) {
+     return <p>Loading...</p>;
+     }
+
+     
+     //console.log(workout);
     // const [exerciseInput, setExerciseInput] = useState('');
     // const [setsInput, setSetsInput] = useState('');
     // const [weightInput, setWeightInput] = useState('');

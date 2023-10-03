@@ -46,12 +46,14 @@ query allWorkouts {
 }`
 
 export const QUERY_SINGLE_WORKOUT = gql`
-query singleWorkout {
+query singleWorkout ($workoutId: ID!){
+    singleWorkout(workoutId:$workoutId)  {
     workout {
         _id
         title
         description
     }
+}
 }`
 
 //What WOULD this do exactly?

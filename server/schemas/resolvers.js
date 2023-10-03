@@ -9,13 +9,13 @@ const resolvers = {
         },
 
         user: async (parent,args,context) => {
-            console.log(context.user)
+          
             if (context.user) {
                 const user = await User.findById(context.user._id).populate({
                     path: 'workouts',
                     populate: 'exercises',
                 });
-                console.log(user)
+               
                 return user;
         
             }
@@ -27,7 +27,7 @@ const resolvers = {
         },
 
         workout: async (parent,args,context) => {
-            console.log(context.workout)
+            console.log("***" +context.workout)
             if (context.workout) {
                 const workout = await Workout.findById(context.workout._id).populate({
                     path: 'exercises',
@@ -36,8 +36,13 @@ const resolvers = {
                 console.log(workout)
                 return workout;
             }
+        },
+        singleWorkout: async (parent,args,context) => {
+            console.log(args)
+            const workout = await Workout.findById({_id:"651752132ec87883686838bb"})
+            console.log(workout)
+           // return workout;
         }
-
 
     },
 
