@@ -155,7 +155,7 @@ const resolvers = {
 
         //THIS is where we will later add removeWorkout 
 
-        removeWorkout: async (parent, { userId, workoutId }, context) => {
+        removeWorkout: async (parent, { workoutId }, context) => {
             // Ensure the user is authenticated
             if (!context.user) {
               throw new AuthenticationError('Not logged in');
@@ -163,21 +163,13 @@ const resolvers = {
       
             try {
               // Remove the workout from the user's workouts
-              const updatedUser = await User.findByIdAndUpdate(
-                userId,
-                {
-                  $pull: { workouts: workoutId },
-                },
-                { new: true }
-              );
-      
-              if (!updatedUser) {
-                throw new Error('User not found');
-              }
               
               await Workout.findByIdAndDelete(workoutId);
+              await User.findByIdAndUpdate(context.user._id, {
+                $pull: { workouts: workoutId },
+              });
       
-              return updatedUser;
+              return {_id: workoutId };
             } catch (error) {
               console.error(error);
               throw new Error('Could not remove workout');

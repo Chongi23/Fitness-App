@@ -67,12 +67,11 @@ export const RECORD_WORKOUT = gql`
     }
   }
 `;
-//Will need to be able to REMOVE Workouts and Exercises
-//export const ADD_EXERCISE= gql`
-//mutation addExercise($workoutId: ID!, $exercise: String!) {
-//        addExercise(workoutId: $workoutId, exercise: $exercise) {
-//            _id
-//            workout
-//        }
-//}
-//`;
+
+export const REMOVE_WORKOUT = gql`
+  mutation removeWorkout($workoutId: ID!) {
+    removeWorkout(workoutId: $workoutId) {
+      _id
+    }
+  }
+`;

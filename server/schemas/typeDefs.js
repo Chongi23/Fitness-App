@@ -81,7 +81,7 @@ const typeDefs = gql`
           addWorkout(title:String,description:String): Workout
           addExerciseToWorkout(userId: ID!, workoutId: ID!, exercise: ExerciseInput!): Workout
           removeUser(userId: ID!): User   
-          removeWorkout(userId: ID!, workout: String!): User
+          removeWorkout(workoutId: ID!): User
           createExerciseForWorkout(workoutId: ID!, exercise: ExerciseInput!): Exercise
           recordWorkout(userId: ID!, workout: WorkoutInput!): Tracker
     }
