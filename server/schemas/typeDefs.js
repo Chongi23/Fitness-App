@@ -28,7 +28,7 @@ const typeDefs = gql`
     }
   
     type ExerciseDetail {
-      _id: ID!
+      _id: ID
       sets: Int
       reps: Int
       weight: Int
@@ -36,7 +36,7 @@ const typeDefs = gql`
     }
     
     type Tracker {
-      _id: ID!
+      _id: ID
       workoutDate: String
       exerciseDetails: [ExerciseDetail]
     }
@@ -47,22 +47,32 @@ const typeDefs = gql`
    token: ID!
    user: User
   }
+  input ExerciseDetailInput {
+    sets: Int
+    reps: Int
+    weight: Int
+    notes: String
+  }
 
+  input ExerciseInput {
+    name: String!
+    description: String
+    details: [ExerciseDetailInput]
+  }
+
+  input WorkoutInput {
+    title: String!
+    description: String
+    exercises: [ExerciseInput]
+  }
     type Query {
         users: [User]!
         user: User
         userWorkoutHistory(userId: ID!): [Tracker]
         workouts: [Workout]!
         workout: Workout
+        singleWorkout (workoutId: ID!): Workout 
     }
- # Added workout type def - KLG 09/27/23
-
-
-
-
-
-    ### Create a new exercise for a specific workout.  This will be used in mutations and queries
-  
 
     type Mutation {
         #Set up mutations to handle creating a user or logging into a user profile and return Auth type
@@ -75,28 +85,6 @@ const typeDefs = gql`
           createExerciseForWorkout(workoutId: ID!, exercise: ExerciseInput!): Exercise
           recordWorkout(userId: ID!, workout: WorkoutInput!): Tracker
     }
-
-    input ExerciseDetailInput {
-      sets: Int
-      reps: Int
-      weight: Int
-      notes: String
-    }
-
-    input ExerciseInput {
-      name: String!
-      description: String
-      details: [ExerciseDetailInput]
-    }
-
-    input WorkoutInput {
-      title: String!
-      description: String
-      exercises: [ExerciseInput]
-    }
-
-  
-
     `;
 
 module.exports = typeDefs;

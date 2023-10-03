@@ -23,7 +23,7 @@ const WorkoutForm = ({ userId }) => {
         },
       });
       //setWorkoutData(data);
-window.location.reload();
+//window.location.reload();
       setWorkoutData({
         title: '',
         description: ''
