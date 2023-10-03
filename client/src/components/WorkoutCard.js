@@ -13,10 +13,7 @@ const WorkoutCard = ({ workout,handleStateChange }) => {
             <div>
                 <ExerciseCard />
             </div>
-            <Link to={`/workoutView/${workout._id}`}>
-            <Button primary style={{width:"fit-content"}} onClick={() => handleStateChange(true)}>Start</Button>
-            </Link>
-            <Button primary style={{width:"fit-content"}}>Delete</Button>
+            <Button primary style={{width:"fit-content"}} onClick={() => handleStateChange()}>Delete</Button>
             </Segment>
         </Card>
     );

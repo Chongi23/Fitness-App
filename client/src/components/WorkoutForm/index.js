@@ -43,6 +43,7 @@ window.location.reload();
 
   return (
     <Card  style={{width: "80%", padding: "1em"}}>
+      <Segment inverted color="blue">
       <Card.Header>Lets build some workouts</Card.Header>
       {Auth.loggedIn() ? (
         <Form
@@ -61,7 +62,7 @@ window.location.reload();
             />
             </Form.Field>
             <Form.Field>
-              <label>Description:</label>
+              <label>Work out Detail:</label>
             <textarea
               name="description"
               placeholder='Add a Workout Description...'
@@ -70,7 +71,7 @@ window.location.reload();
             />
           </Form.Field>
           <div>
-            <Button  type="submit">
+            <Button secondary type="submit">
               Add Workout
             </Button>
           </div>
@@ -86,6 +87,7 @@ window.location.reload();
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
+      </Segment>
     </Card>
   );
 };
