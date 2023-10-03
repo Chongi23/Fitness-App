@@ -3,7 +3,7 @@ import { Card, Button } from 'semantic-ui-react';
 import ExerciseCard from './ExerciseCard/ExerciseCard';
 import { Link } from 'react-router-dom';
 
-const WorkoutCard = ({ workout, startstate, handleStateChange }) => {
+const WorkoutCard = ({ workout, startState, handleStateChange }) => {
     return (
         <Card>
             <h4>{workout.title}</h4>
@@ -12,7 +12,7 @@ const WorkoutCard = ({ workout, startstate, handleStateChange }) => {
                 <ExerciseCard />
             </div>
             <Link to={`/workoutView/${workout._id}`}>
-            <Button style={{width:"fit-content"}} startstate={startstate} onClick={() => handleStateChange(true)}>Start</Button>
+            <Button style={{width:"fit-content"}} startState={startState} onClick={() => handleStateChange(true)}>Start</Button>
             </Link>
             <Button style={{width:"fit-content"}}>Delete</Button>
         </Card>
