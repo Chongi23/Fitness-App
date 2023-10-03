@@ -4,7 +4,8 @@ import { useQuery, useMutation } from '@apollo/client';
 import { ADD_WORKOUT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { Segment, Button, Card, Form } from 'semantic-ui-react';
-import WorkoutCard from '../WorkoutCard';
+import ExerciseForm from '../ExerciseForm/ExerciseForm.js';
+
 const WorkoutForm = ({ userId }) => {
   // set initial form state for new workouts
   const [workoutData, setWorkoutData] = useState({
@@ -39,23 +40,7 @@ window.location.reload();
       [name]: value,
     });
   };
-  // Attempt at making a success workout
-//function Success() {
-//   const [addWorkout] = useMutation(ADD_WORKOUT);
-//   //What are we doing wrong here
-//   // Also user is not defined
-//   const workout = addWorkout;
-//   useEffect(() => {
-//      async function saveWorkout() {
-//         const exercises = workout.map((exercise) => exercise._id);
-//          if(exercises.length) {
-//            const { data } = await addWorkout({ variable: { exercises } });
-//            console.log(data);
-//            return data;
-//          }
-//      }
-//      saveWorkout();
-//   }, [addWorkout]);
+
   return (
     <Card  style={{width: "80%", padding: "1em"}}>
       <Card.Header>Lets build some workouts</Card.Header>

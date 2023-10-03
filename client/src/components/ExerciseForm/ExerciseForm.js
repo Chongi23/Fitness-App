@@ -8,13 +8,12 @@ import { Segment, Button, Card, Form } from 'semantic-ui-react';
 const ExerciseForm = ({ userId, workoutId, startState, handleStateChange }) => {
   // set initial form state for new workouts
   const [exerciseData, setExerciseData] = useState({
-    title: '',
+    name: '',
     description: ''
    // exerciseDetails: []
     
     });
-  };
- const formRef = useRef(null);
+  
   const [addExercise, { error }] = useMutation(ADD_EXERCISE_TO_WORKOUT);
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -27,7 +26,7 @@ const ExerciseForm = ({ userId, workoutId, startState, handleStateChange }) => {
       });
       //setWorkoutData(data);
 window.location.reload();
-      setExerciseDataData({
+      setExerciseData({
         name: '',
         description: ''
       });
@@ -44,7 +43,7 @@ window.location.reload();
   };
 
   return (
-    <Card  style={{width: "80%", padding: "1em"}}>
+    <Card  style={{width: "75%", padding: "1em"}}>
       <Card.Header>Exercise Details</Card.Header>
       {Auth.loggedIn() ? (
         <Form
@@ -90,5 +89,5 @@ window.location.reload();
       )}
     </Card>
   );
-
+};
 export default ExerciseForm;
