@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import WorkoutView from './pages/WorkoutView';
 
 import Header from './components/Header';
 import Workout from './pages/Workout';
@@ -37,8 +38,8 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<Signup />} />
-            
             <Route exact path="/workout" element={<Workout />} />
+            <Route exact path='/workoutView/:id' element={<WorkoutView />} />
           </Routes>
           </div>
         </div>
@@ -46,8 +47,6 @@ function App() {
     </ApolloProvider>
   );
 }
-
-
 
 
 
