@@ -36,6 +36,24 @@ query singleUser {
 }
 `;
 
+export const QUERY_WORKOUTS = gql`
+query allWorkouts {
+    workouts {
+        _id
+        title
+        description
+    }
+}`
+
+export const QUERY_SINGLE_WORKOUT = gql`
+query singleWorkout {
+    workout {
+        _id
+        title
+        description
+    }
+}`
+
 //What WOULD this do exactly?
 // export const QUERY_ME = gql`?
 
