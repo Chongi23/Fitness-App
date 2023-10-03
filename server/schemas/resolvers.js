@@ -17,7 +17,6 @@ const resolvers = {
                 });
                 console.log(user)
                 return user;
-
         
             }
             throw new AuthenticationError('Not logged in');
