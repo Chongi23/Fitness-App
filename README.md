@@ -55,5 +55,8 @@ To do So.... etc...etc...etc...
 ## License
 MIT License
 
+## Reference for favicon:
+https://icons8.com/icon/1784/dumbbell
+
 ## Questions
 If there are any questions about my repo please contact me directly at <EMAIL>. You can find more of my projects at (https://github.comChongi23/Fitness-App/)
